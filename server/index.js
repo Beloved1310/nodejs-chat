@@ -6,6 +6,9 @@ const PORT = process.env.PORT || 5000
 
 io.on('connection', (socket) => {
     console.log('a user connected');
+    socket.on('create-room', name =>{
+        console.log(`The room name recieved is ${name}`)
+    })
 });
 
 http.listen(PORT, () => {
