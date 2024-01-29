@@ -1,26 +1,28 @@
-import './App.css'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
-import React, { useState } from 'react'
-import { UserContext } from './UserContext'
-import Home from './components/Home/Home'
-import Chat from './components/Chat/Chat'
-import Navbar from './components/layout/Navbar'
+import './App.css';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'; // Fix import here
+import React, { useState } from 'react';
+import { UserContext } from './UserContext';
+import Chat from './components/chat/Chat';
+import Home from './components/home/Home';
+import Navbar from './components/layout/Navbar';
 
 function App() {
-  const [user, setUser] = useState('')
+  const [user, setUser] = useState(null);
+
   return (
     <Router>
       <div className="App">
         <UserContext.Provider value={{ user, setUser }}>
-          <Navbar/>
+          <Navbar />
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/chat" element={<Chat />} />
+            <Route path="/chat/:room_id/:room_name" element={<Chat />} />
           </Routes>
         </UserContext.Provider>
       </div>
     </Router>
-  )
+  );
 }
 
-export default App
+export default App;
+

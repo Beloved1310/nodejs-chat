@@ -5,11 +5,12 @@ import RoomList from './RoomList';
 import io from 'socket.io-client';
 let socket;
 const Home = () => {
-    const ENDPT = 'localhost:5000';
+    const ENDPT = 'localhost:6000';
     useEffect(() => {
         socket = io(ENDPT);
+        console.log("Socket connected successfully!");
         return () => {
-            socket.emit('disconnect');
+            // socket.emit('disconnect');
             socket.off();
         }
     }, [ENDPT])
